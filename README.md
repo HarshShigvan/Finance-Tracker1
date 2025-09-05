@@ -1,46 +1,35 @@
 ﻿# Finance-Tracker1
 
-# 📊 Financial Dashboard
+# 📊 Financial Dashboard - Full Stack
 
-A complete, responsive financial dashboard built with **HTML**, **CSS**, and **JavaScript**.  
-It features a fixed left sidebar, interactive charts, and smooth animations for a modern user experience.
+A complete, responsive financial dashboard built as a full stack application with **frontend** and **backend** components.
 
 ---
 
-## 📂 Files Overview
+## 📂 Project Structure
 
-### **index.html**
-- HTML structure for the dashboard
-- Fixed left sidebar with:
-  - Net worth chart
-  - Month selector
-  - Menu items
-- Cards for:
-  - Balance
-  - Assets
-  - Income goal
-  - Chart
-  - Notifications
-  - Income sources
-  - Spending categories
-- Font Awesome icons for visual elements
+```
+Finance-Tracker1/
+├── frontend/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+├── backend/
+│   ├── server.js
+│   └── package.json
+├── README.md
+├── TODO.md
+└── .gitignore
+```
 
-### **styles.css**
-- Modern, clean design using CSS variables for consistent theming
-- Fully responsive layout (mobile, tablet, desktop)
-- Smooth hover effects and shadows
-- Collapsible sidebar for mobile view
-- Color-coded categories and visual indicators
+### **Frontend**
+- **index.html**: HTML structure for the dashboard
+- **styles.css**: Modern, clean design with responsive layout
+- **script.js**: Interactive functionality with Chart.js integration
 
-### **script.js**
-- Interactive functionality:
-  - Mobile menu toggle
-  - Dynamic month selection updates
-  - Menu navigation
-  - Chart.js integration for income & expenses visualization
-  - Dynamic content updates per month
-  - Progress bar animations
-  - Data management for different months
+### **Backend**
+- **server.js**: Express.js server to serve the frontend and API endpoints
+- **package.json**: Dependencies and scripts for the backend
 
 ---
 
@@ -56,23 +45,41 @@ It features a fixed left sidebar, interactive charts, and smooth animations for 
 - **All requested cards** with dummy data
 - **Modern, responsive design** with smooth animations
 - **Mobile-Friendly** with collapsible sidebar
+- **Full Stack Setup** with Express backend
 
 ---
 
 ## 🚀 How to Use
-1. Save all three files (**index.html**, **styles.css**, **script.js**) in the same directory.
-2. Open `index.html` in your web browser.
-3. No additional setup required — **Chart.js** is loaded from a CDN.
+
+### Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the server:
+   ```bash
+   npm start
+   ```
+
+4. Open your browser and go to `http://localhost:3000`
+
+### Development
+- For development with auto-restart:
+  ```bash
+  npm run dev
+  ```
 
 ---
 
-
 ## 🛠️ Tech Stack
-- **HTML5**
-- **CSS3**
-- **JavaScript (ES6+)**
-- **Chart.js** (via CDN)
-- **Font Awesome**
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+), Chart.js (via CDN), Font Awesome
+- **Backend**: Node.js, Express.js
 
 ---
 

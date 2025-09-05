@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main container for the entire application, using Flexbox for layout -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="net-worth-chart">
+                    <div class="circular-chart"> <!-- This chart is styled with a conic-gradient in CSS -->
+                        <div class="circular-chart-inner">
+                            <div class="circular-chart-circle">
+                                <span class="net-worth-value">$125,430</span>
+                                <span class="net-worth-label">Net Worth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section for selecting the month -->
+            <div class="sidebar-middle">
+                <h3>Months</h3>
+                <ul class="month-list"> <!-- Each list item has a 'data-month' attribute used by JavaScript to identify the selected month -->
+                    <li class="active" data-month="0">Jan</li>
+                    <li data-month="1">Feb</li>
+                    <li data-month="2">Mar</li>
+                    <li data-month="3">Apr</li>
+                    <li data-month="4">May</li>
+                    <li data-month="5">Jun</li>
+                    <li data-month="6">Jul</li>
+                    <li data-month="7">Aug</li>
+                    <li data-month="8">Sep</li>
+                    <li data-month="9">Oct</li>
+                    <li data-month="10">Nov</li>
+                    <li data-month="11">Dec</li>
+                </ul>
+            </div>
+            
+            <!-- Main navigation menu -->
+            <div class="sidebar-bottom">
+                <ul class="menu-items">
+                    <li class="active" data-page="dashboard"> <!-- 'data-page' attribute is used by JavaScript for navigation -->
+                        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li data-page="income-expenses">
+                        <a href="#"><i class="fas fa-money-bill-wave"></i> Income & Expenses</a>
+                    </li>
+                    <li data-page="assets-goals">
+                        <a href="#"><i class="fas fa-coins"></i> Assets & Goals</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-button" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header Section -->
+            <header class="content-header">
+                <div class="header-background">
+                    <div class="header-content">
+                        <div class="user-profile">
+                            <img src="https://picsum.photos/seed/user456/80/80.jpg" alt="User Profile">
+                            <div class="user-info">
+                                <h1>Rajesh Sharma</h1>
+                                <p>Financial Analyst</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content: A CSS grid layout for all the information cards -->
+            <div class="dashboard-content">
+                <!-- Available Balance Card -->
+                <div class="card balance-card">
+                    <div class="card-header">
+                        <h3>Available Balance</h3>
+                        <div class="card-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-amex"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- These elements are updated by JavaScript based on the selected month -->
+                        <p class="balance-amount">₹3,45,680.50</p>
+                        <p class="balance-change positive">+2.5% from last month</p>
+                    </div>
+                </div>
+                
+                <!-- Assets List -->
+                <div class="card assets-card">
+                    <div class="card-header">
+                        <h3>Assets</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="assets-list">
+                            <li>
+                                <div class="asset-icon gold">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="asset-info">
+                                    <h4>Gold</h4>
+                                    <p>₹5,20,000</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="asset-icon stock">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="asset-info">
+                                    <h4>Stocks</h4>
+                                    <p>₹8,75,000</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="asset-icon warehouse">
+                                    <i class="fas fa-warehouse"></i>
+                                </div>
+                                <div class="asset-info">
+                                    <h4>Warehouse</h4>
+                                    <p>₹25,00,000</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="asset-icon land">
+                                    <i class="fas fa-mountain"></i>
+                                </div>
+                                <div class="asset-info">
+                                    <h4>Land</h4>
+                                    <p>₹45,00,000</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Income Goal Progress -->
+                <div class="card income-goal-card">
+                    <div class="card-header">
+                        <h3>Income Goal</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- These elements are also updated by JavaScript -->
+                        <div class="goal-info">
+                            <p>₹42,500 of ₹50,000</p>
+                            <p class="goal-percentage">85%</p>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                        <p class="goal-message">You're close to reaching your monthly goal!</p>
+                    </div>
+                </div>
+                
+                <!-- Income & Expenses Chart -->
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h3>Income & Expenses</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <!-- The canvas element where Chart.js will draw the line chart -->
+                            <canvas id="incomeExpenseChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Box -->
+                <div class="card notification-card">
+                    <div class="card-header">
+                        <h3>Due Bills</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Notification items are dynamically generated by JavaScript -->
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="notification-info">
+                                <h4>Electricity Bill</h4>
+                                <p>Due in 3 days</p>
+                            </div>
+                            <div class="notification-amount">
+                                ₹2,450
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <div class="notification-info">
+                                <h4>Internet Bill</h4>
+                                <p>Due in 5 days</p>
+                            </div>
+                            <div class="notification-amount">
+                                ₹1,200
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="notification-info">
+                                <h4>Mobile Recharge</h4>
+                                <p>Due in 7 days</p>
+                            </div>
+                            <div class="notification-amount">
+                                ₹599
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Income Sources -->
+                <div class="card income-sources-card">
+                    <div class="card-header">
+                        <h3>Income Sources</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Income source items are dynamically generated by JavaScript -->
+                        <ul class="income-sources-list">
+                            <li>
+                                <div class="income-source-icon salary">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="income-source-info">
+                                    <h4>Salary</h4>
+                                    <p>₹35,000</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="income-source-icon freelance">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <div class="income-source-info">
+                                    <h4>Freelance</h4>
+                                    <p>₹7,500</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="income-source-icon investment">
+                                    <i class="fas fa-piggy-bank"></i>
+                                </div>
+                                <div class="income-source-info">
+                                    <h4>Investment</h4>
+                                    <p>₹5,000</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Spending Categories -->
+                <div class="card spending-categories-card">
+                    <div class="card-header">
+                        <h3>Spending Categories</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Spending category items are dynamically generated by JavaScript -->
+                        <div class="spending-categories">
+                            <div class="spending-category housing">
+                                <div class="category-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h4>Housing</h4>
+                                <p>₹12,000</p>
+                            </div>
+                            <div class="spending-category personal">
+                                <div class="category-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h4>Personal</h4>
+                                <p>₹8,500</p>
+                            </div>
+                            <div class="spending-category transportation">
+                                <div class="category-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <h4>Transportation</h4>
+                                <p>₹5,200</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Include Chart.js library for creating charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Link to the main JavaScript file for the dashboard logic -->
+    <script src="script.js"></script>
+</body>
+</html>

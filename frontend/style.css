@@ -1,0 +1,667 @@
+/* CSS Variables for Theming: Defines a consistent color palette and style values for the entire application. */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+    --purple-color: #8b5cf6;
+    --gold-color: #f59e0b;
+    --land-color: #84cc16;
+    --warehouse-color: #64748b;
+    
+    --background-color: #f8fafc;
+    --card-background: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    
+    --transition: all 0.3s ease;
+}
+
+/* Dark mode variables */
+.dark-mode {
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #333333;
+    --shadow-sm: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
+}
+
+/* Base Styles & Reset: A simple reset to remove default browser margins and paddings. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Main application container using Flexbox to position the sidebar and main content. */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles: Fixed position sidebar that stays on the left. */
+.sidebar {
+    width: 280px;
+    background-color: var(--card-background);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.sidebar-top {
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Net Worth Donut Chart Styles */
+.net-worth-chart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* The outer circle of the chart, created using a conic gradient for the progress effect. */
+.circular-chart {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--primary-color) 0% 75%,
+        #e2e8f0 75% 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* The inner circle that creates the "donut" hole. */
+.circular-chart-inner {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--card-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.circular-chart-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.net-worth-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.net-worth-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Middle section of the sidebar containing the month list. */
+.sidebar-middle {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-middle h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Month list styled as a grid for a compact layout. */
+.month-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.month-list li {
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.month-list li:hover {
+    background-color: #f1f5f9;
+}
+
+.month-list li.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Bottom section of the sidebar for the main menu. */
+.sidebar-bottom {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.menu-items {
+    list-style: none;
+}
+
+.menu-items li {
+    margin-bottom: 0.75rem;
+}
+
+.menu-items li a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.menu-items li:hover a {
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+}
+
+.menu-items li.active a {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.menu-items i {
+    font-size: 1.2rem;
+}
+
+/* Main Content Area: Takes up the remaining space next to the sidebar. */
+.main-content {
+    margin-left: 280px;
+    flex-grow: 1;
+    padding: 0;
+    transition: var(--transition);
+}
+
+/* Header Section Styles */
+.content-header {
+    margin-bottom: 2rem;
+}
+
+/* The decorative background for the header with a linear gradient. */
+.header-background {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 0 0 20px 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative circles using pseudo-elements for a modern look. */
+.header-background::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.header-background::after {
+    content: '';
+    position: absolute;
+    bottom: -70px;
+    left: -70px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensures header content appears above the decorative pseudo-elements. */
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    object-fit: cover;
+}
+
+.user-info h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.user-info p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Dashboard Content Grid: A responsive grid that adjusts the number of columns based on available space. */
+.dashboard-content {
+    padding: 0 2rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* General Card Styles: Base styles for all cards on the dashboard. */
+.card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+/* Hover effect for cards to provide visual feedback. */
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.card-body { /* Main content area of a card. */
+    padding: 1.5rem;
+}
+
+/* Balance Card */
+.balance-card .card-icons {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.balance-change {
+    font-size: 0.9rem;
+}
+
+.balance-change.positive {
+    color: var(--success-color);
+}
+
+.balance-change.negative {
+    color: var(--danger-color);
+}
+
+/* Assets Card Styles */
+.assets-list {
+    list-style: none;
+}
+
+.assets-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.assets-list li:last-child {
+    border-bottom: none;
+}
+
+.asset-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.asset-icon.gold {
+    background-color: var(--gold-color);
+}
+
+.asset-icon.stock {
+    background-color: var(--success-color);
+}
+
+.asset-icon.warehouse {
+    background-color: var(--warehouse-color);
+}
+
+.asset-icon.land {
+    background-color: var(--land-color);
+}
+
+.asset-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.asset-info p {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Income Goal Card Styles */
+.goal-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.goal-percentage {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Progress bar for the income goal. */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--success-color);
+    border-radius: 5px;
+}
+
+.goal-message {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* Chart Card Styles: Defines the container for the Chart.js canvas. */
+.chart-container {
+    height: 200px;
+    position: relative;
+}
+
+/* Notification Card Styles */
+.notification-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--warning-color);
+}
+
+.notification-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.notification-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.notification-amount {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-left: auto;
+}
+
+/* Income Sources Card Styles */
+.income-sources-list {
+    list-style: none;
+}
+
+.income-sources-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.income-sources-list li:last-child {
+    border-bottom: none;
+}
+
+.income-source-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.income-source-icon.salary {
+    background-color: var(--primary-color);
+}
+
+.income-source-icon.freelance {
+    background-color: var(--purple-color);
+}
+
+.income-source-icon.investment {
+    background-color: var(--success-color);
+}
+
+.income-source-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.income-source-info p {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Spending Categories Card Styles */
+.spending-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.spending-category {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+}
+
+.spending-category.housing {
+    background-color: var(--info-color);
+}
+
+.spending-category.personal {
+    background-color: var(--purple-color);
+}
+
+.spending-category.transportation {
+    background-color: var(--success-color);
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spending-category h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.spending-category p {
+    font-weight: 600;
+}
+
+/* Mobile Menu Toggle Button: Hidden on desktop, visible on mobile. */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 101;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+}
+
+/* Style for the theme toggle button */
+.theme-toggle-button {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 102;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design: Media query for screens 768px or smaller (tablets and phones). */
+@media (max-width: 768px) {
+    /* Hides the sidebar off-screen by default on mobile. */
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    /* The '.active' class (toggled by JS) slides the sidebar into view. */
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    /* Main content takes full width when sidebar is hidden. */
+    .main-content {
+        margin-left: 0;
+    }
+    
+    /* Shows the mobile menu toggle button. */
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .dashboard-content {
+        /* Stacks cards in a single column on small screens. */
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .user-profile {
+        /* Adjusts user profile layout for mobile. */
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-info h1 {
+        font-size: 1.5rem;
+    }
+    
+    .spending-categories {
+        flex-direction: column;
+    }
+}
